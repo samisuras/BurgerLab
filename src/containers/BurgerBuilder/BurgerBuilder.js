@@ -6,6 +6,11 @@ import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import axios from "axios";
+import hamburguesa_sencilla from "../../assets/images/hamburguesa_sencilla.png"
+import hamburguesa_clasica from "../../assets/images/hamburguesa_clasica.png"
+import hamburguesa_especial from "../../assets/images/hamburguesa_especial.png"
+import hamburguesa_paro from "../../assets/images/hamburguesa_paro_cardiaco.png"
+
 
 const INGREDIENT_PRICES = {
     lechuga: 5,
@@ -90,6 +95,54 @@ class BurgerBuilder extends Component {
         }
     }
 
+    sencilla = () => {
+        this.setState({
+            totalPrice: 60, ingredients: {
+                lechuga: 0,
+                tocino: 0,
+                queso: 1,
+                carne: 1
+            },
+            purchasable: true
+        });
+    }
+
+    clasica = () => {
+        this.setState({
+            totalPrice: 65, ingredients: {
+                lechuga: 1,
+                tocino: 0,
+                queso: 1,
+                carne: 1
+            },
+            purchasable: true
+        });
+    }
+
+    especial = () => {
+        this.setState({
+            totalPrice: 85, ingredients: {
+                lechuga: 1,
+                tocino: 1,
+                queso: 1,
+                carne: 1
+            },
+            purchasable: true
+        });
+    }
+
+    paro = () => {
+        this.setState({
+            totalPrice: 180, ingredients: {
+                lechuga: 0,
+                tocino: 2,
+                queso: 3,
+                carne: 3
+            },
+            purchasable: true
+        });
+    }
+
     render() {
         const disabledInfo = {
             ...this.state.ingredients
@@ -99,6 +152,95 @@ class BurgerBuilder extends Component {
         }
         return (
             <span>
+                <div className="row mt-3 mb-5">
+                    <div className="col-sm-12" align="center">
+                        <h2>Las mas vendidas</h2>
+                    </div>
+                    <div className="col-sm-3">
+                        <div class="card ml-5 mr-3 mt-0 mb-0 p-1 pb-0 pt-0">
+                            <div className="col-sm-12 mt-0 pt-0" align="center">
+                                <img src={hamburguesa_sencilla} alt="..." width="65%" height="65%" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Sencilla</h5>
+                                <p class="card-text">
+                                    Incluye:
+                                    <ul>
+                                        <li>Carne</li>
+                                        <li>Queso</li>
+                                    </ul>
+                                </p>
+                                <div className="col-sm-12 mb-0 pb-0" align="center">
+                                    <button onClick={this.sencilla} class="btn btn-lg btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-3">
+                        <div class="card ml-5 mr-3 mt-0 mb-0 p-1 pb-0 pt-0">
+                            <div className="col-sm-12 mt-0 pt-0" align="center">
+                                <img src={hamburguesa_clasica} alt="..." width="60%" height="60%" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Clasica</h5>
+                                <p class="card-text">
+                                    Incluye:
+                                    <ul>
+                                        <li>Carne</li>
+                                        <li>Queso</li>
+                                        <li>Lechuga</li>
+                                    </ul>
+                                </p>
+                                <div className="col-sm-12 mb-0 pb-0" align="center">
+                                    <button onClick={this.clasica} class="btn btn-lg btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-3">
+                        <div class="card ml-5 mr-3 mt-0 mb-0 p-1 pb-0 pt-0">
+                            <div className="col-sm-12 mt-0 pt-0" align="center">
+                                <img src={hamburguesa_especial} alt="..." width="70%" height="70%" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Especial</h5>
+                                <p class="card-text">
+                                    Incluye:
+                                    <ul>
+                                        <li>Carne</li>
+                                        <li>Queso</li>
+                                        <li>Lechuga</li>
+                                        <li>Tocino</li>
+                                    </ul>
+                                </p>
+                                <div className="col-sm-12 mb-0 pb-0" align="center">
+                                    <button onClick={this.especial} class="btn btn-lg btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-sm-3">
+                        <div class="card ml-5 mr-3 mt-0 mb-0 p-1 pb-0 pt-0">
+                            <div className="col-sm-12 mt-0 pt-0" align="center">
+                                <img src={hamburguesa_paro} alt="..." width="65%" height="65%" />
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Paro Cardiaco</h5>
+                                <p class="card-text">
+                                    Incluye:
+                                    <ul>
+                                        <li>3x Carne</li>
+                                        <li>3x Queso</li>
+                                        <li>2x Tocino</li>
+                                    </ul>
+                                </p>
+                                <div className="col-sm-12 mb-0 pb-0" align="center">
+                                    <button onClick={this.paro} class="btn btn-lg btn-primary">Crear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
                     <OrderSummary
                         ingredients={this.state.ingredients}
