@@ -1,7 +1,7 @@
 .NavigationItem {
     margin: 10px 0;
     box-sizing: border-box;
-    display: block;
+    display: inline;
     width: 100%;
 }
 
@@ -10,7 +10,7 @@
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
-    display: block;
+    display: inline;
 }
 
 .NavigationItem a:hover,
@@ -22,7 +22,7 @@
 @media (min-width: 500px) {
     .NavigationItem {
         margin: 0;
-        display: flex;
+        display: inline-block;
         height: 100%;
         width: auto;
         align-items: center;

@@ -18,7 +18,7 @@ this.submit = async (event) => {
         console.log(respuesta.data.usuario);
         const usuario = respuesta.data.usuario
         sessionStorage.setItem('nombre',usuario.nombre)
-        sessionStorage.setItem('apellido',usuario.apellido)
+        sessionStorage.setItem('administrador',usuario.administrador)
         sessionStorage.setItem('correo',usuario.correo)
         alert('Credenciales Correctas')
         window.location.href = '/home';

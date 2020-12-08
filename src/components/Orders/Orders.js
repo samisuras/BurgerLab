@@ -30,27 +30,31 @@ class Orders extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="row row-cols-1 row-cols-md-3 g-3">
               {this.state.ordenes.map((orden, i) => {
                 return (
-                  <div className="col mb-2 mt-2">
-                    <div className="card h-100 w-100" key={i}>
+                  <div className="col-sm-3 mb-2 mt-2">
+                    <div className="card border-warning h-100 w-100" key={i}>
                       <div className="card-body">
                         <h5 className="card-title">Orden: {orden.idorden}</h5>
                         <p className="card-text">
                           Fecha: {orden.fecha.split('T')[0]} <br />
-                          Costo: {orden.precio} <br />
                           Ingredientes: <br />
                           <ul>
-                            <li>{orden.ingrediente}</li>
+                            {orden.ingrediente.map((ingrediente,i) =>{
+                              return(
+                              <li>{ingrediente}</li>
+                              )
+                            })}
                           </ul>
                         </p>
+                      </div>
+                      <div class="card-footer border-warning">
+                        Costo: {orden.precio}$ 
                       </div>
                     </div>
                   </div>
                 )
               })}
-            </div>
           </div>
         </div>
       </Layout >
