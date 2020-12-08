@@ -1,6 +1,7 @@
 import React from 'react';
 import burgerLogo from "../../assets/images/burger.png";
 import axios from 'axios'
+import LoginS from './Login.css'
 
 this.datos = {
     correo: "",
@@ -11,21 +12,25 @@ this.submit = async (event) => {
     event.preventDefault();
     this.datos.correo = document.getElementById('correo').value
     this.datos.contrasena = document.getElementById('contrasena').value
+    console.log(this.datos);
     try {
-        const res = await axios.post('http://localhost:3300/user/login', this.datos)
-        console.log(res);
+        const respuesta = await axios.post('http://localhost:3300/user/login', this.datos)
+        console.log(respuesta.data.usuario);
+        const usuario = respuesta.data.usuario
+        sessionStorage.setItem('nombre',usuario.nombre)
+        sessionStorage.setItem('apellido',usuario.apellido)
+        sessionStorage.setItem('correo',usuario.correo)
         alert('Credenciales Correctas')
         window.location.href = '/home';
     } catch (error) {
         alert('Correo y/o contraseña incorrectos')
     }
-    console.log(this.datos);
 
 }
 
 const login = (props) => (
-    <div className="container mt-4 p-2">
-        <div class="card p-5">
+    <div class="container mt-4 p-2 Bc" >
+        <div class="card p-5" style={{background: 'rgb(231, 171, 79)'}}>
             <div class="col-sm-12" align="center">
                 <h1>Burger Lab</h1>
             </div>

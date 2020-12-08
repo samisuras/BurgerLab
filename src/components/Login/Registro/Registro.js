@@ -35,7 +35,7 @@ this.submit = async (event) => {
 
 const Registro = (props) => (
     <div className="container mt-4 p-2">
-        <div className="card p-5">
+        <div className="card p-5" style={{background: 'rgb(231, 171, 79)'}}>
             <div className="col-sm-12" align="center">
                 <h1>Registro de Usuarios de Burger Lab</h1>
             </div>
