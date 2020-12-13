@@ -7,6 +7,7 @@ const navigationItems = () => (
     <ul className={classes.NavigationItems}>
         {sessionStorage.getItem('administrador') === "1" ?
             <div className="d-inline-block">
+                <NavigationItem link="/ordenes-dia">Ordenes del dia</NavigationItem>
                 <NavigationItem link="/reportes">Reporte de Ventas</NavigationItem>
                 <NavigationItem link="/ingredientes">Reporte de Ingredientes</NavigationItem>
             </div>
